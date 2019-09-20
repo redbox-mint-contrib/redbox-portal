@@ -5,7 +5,6 @@ HOST: http://localhost:1337
 
 The ReDBox Portal API provides authorized access to manage functions.
 
-
 ## Record Collection
 
 ### Create Record [POST /<%= branding %>/<%= portal %>/api/records/metadata/{recordType}]
@@ -350,6 +349,46 @@ The ReDBox Portal API provides authorized access to manage functions.
   "editPending": ["pendingusername1@email.com","pendingusername2@email.com"]
 }
 
+### List records by type [GET /<%= branding %>/<%= portal %>/api/records/{recordType}]
++ Parameters
+    + recordType (string) ... The type of record.
+
++ Response 200 (application/json)
+{
+       "summary": {
+            "numFound": 1
+        },
+        "records": [
+            {
+                "title": "record title",
+                "description": "record description",
+                "createdAt": "2017-10-09T03:34:47.660Z",
+                "updatedAt": "2017-11-20T04:08:33.061Z",
+                "oid": "59daee5720b453050057c2f5"
+            }
+  ]
+}
+
+### Search the index for records [GET /<%= branding %>/<%= portal %>/api/records/search]
++ Parameters
+    + solrparameters (string) ... TODO: describe the set of solr params that will be passed through to solr
+
++ Response 200 (application/json)
+{
+       "summary": {
+            "numFound": 1
+        },
+        "records": [
+            {
+                "title": "record title",
+                "description": "record description",
+                "createdAt": "2017-10-09T03:34:47.660Z",
+                "updatedAt": "2017-11-20T04:08:33.061Z",
+                "oid": "59daee5720b453050057c2f5"
+            }
+  ]
+}
+
 ## User Collection
 
 ### List users in the system [GET /<%= branding %>/<%= portal %>/api/users]
@@ -396,6 +435,100 @@ The ReDBox Portal API provides authorized access to manage functions.
     "updatedAt": "2017-11-20T04:08:33.061Z",
     "id": "59daee5720b453050057c2f5"
 }
+
+### Create local user [PUT /<%= branding %>/<%= portal %>/api/users]
++ Parameters
+  + userId (string) ... The id of user to update
+
++ Request Update user details (application/json)
+  + Headers
+    Authorization: Bearer abcabcab-abca-abca-abca-abcabcabcabc
+  + Body
+  {
+    "username": "user1",
+    "name": "John Doe",
+    "email": "jd@example.com"
+  }
+
++ Response 200 (application/json)
+{
+      "name": "John Doe",
+      "username": "user1",
+      "email": "localuser@redboxresearchdata.com.au",
+      "createdAt": "2017-10-09T03:34:47.660Z",
+      "updatedAt": "2017-10-09T03:34:47.660Z",
+      "id": "59daee5720b453050057c2f5"
+}
+
+### Update local user details [PUT /<%= branding %>/<%= portal %>/api/users/{userId}]
++ Parameters
+  + userId (string) ... The id of user to update
+
++ Request Update user details (application/json)
+  + Headers
+    Authorization: Bearer abcabcab-abca-abca-abca-abcabcabcabc
+  + Body
+  {
+    "name": "John Doe",
+    "email": "jd@example.com"
+  }
+
++ Response 200 (application/json)
+{
+      "name": "John Doe",
+      "username": "user1",
+      "email": "localuser@redboxresearchdata.com.au",
+      "createdAt": "2017-10-09T03:34:47.660Z",
+      "updatedAt": "2017-11-20T04:08:33.061Z",
+      "id": "59daee5720b453050057c2f5"
+}
+
+### Change user api key [PUT /<%= branding %>/<%= portal %>/api/users/{userId}/apikey]
++ Parameters
+  + userId (string) ... The id of user to update
+
++ Request Update user details (application/json)
+  + Headers
+    Authorization: Bearer abcabcab-abca-abca-abca-abcabcabcabc
+  + Body
+  {
+    "password": "abcdefab-defa-defa-defa-defabcdefabc"
+  }
+
++ Response 200 (application/json)
+{
+      "name": "John Doe",
+      "username": "user1",
+      "email": "localuser@redboxresearchdata.com.au",
+      "createdAt": "2017-10-09T03:34:47.660Z",
+      "updatedAt": "2017-11-20T04:08:33.061Z",
+      "id": "59daee5720b453050057c2f5"
+}
+
+
+### Change local user password [PUT /<%= branding %>/<%= portal %>/api/users/{userId}/password]
++ Parameters
+  + userId (string) ... The id of user to update
+
++ Request Update user details (application/json)
+  + Headers
+    Authorization: Bearer abcabcab-abca-abca-abca-abcabcabcabc
+  + Body
+  {
+    "password": "password"
+  }
+
++ Response 200 (application/json)
+{
+      "name": "John Doe",
+      "username": "user1",
+      "email": "localuser@redboxresearchdata.com.au",
+      "createdAt": "2017-10-09T03:34:47.660Z",
+      "updatedAt": "2017-11-20T04:08:33.061Z",
+      "id": "59daee5720b453050057c2f5"
+}
+
+
 
 ## Other Functions Collection
 
