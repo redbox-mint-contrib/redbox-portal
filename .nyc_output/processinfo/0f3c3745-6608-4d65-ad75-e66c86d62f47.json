@@ -1,0 +1,1 @@
+{"uuid":"0f3c3745-6608-4d65-ad75-e66c86d62f47","parent":null,"pid":31,"argv":["/usr/local/bin/node","/usr/local/bin/npm","run","api-test"],"execArgv":[],"cwd":"/opt/redbox-portal","time":1572488685923,"ppid":25,"root":"197ad927-a59d-4b1f-80b1-a042c223cc6f","coverageFilename":"/opt/redbox-portal/.nyc_output/0f3c3745-6608-4d65-ad75-e66c86d62f47.json","files":[]}
